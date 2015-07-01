@@ -1,21 +1,20 @@
-	package ua.project.chorniy.serviceImpl;
+package ua.project.chorniy.serviceImpl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 	
-	import org.springframework.beans.factory.annotation.Autowired;
-	import org.springframework.stereotype.Service;
-	import org.springframework.transaction.annotation.Transactional;
+import ua.project.chorniy.dao.OrderDao;
+import ua.project.chorniy.dao.ProductDao;
+import ua.project.chorniy.model.Order;
+import ua.project.chorniy.model.Product;
+import ua.project.chorniy.service.OrderService;
+
+import java.util.ArrayList;
+import java.util.List;
 	
-	import ua.project.chorniy.dao.OrderDao;
-	import ua.project.chorniy.dao.ProductDao;
-	import ua.project.chorniy.model.Order;
-	import ua.project.chorniy.model.Product;
-	import ua.project.chorniy.service.OrderService;
-	
-	import java.util.ArrayList;
-	import java.util.List;
-	
-	@Service("orderService")
-	public class OrderServiceImpl implements OrderService {
-	
+@Service("orderService")
+public class OrderServiceImpl implements OrderService {
 	@Autowired
 	private OrderDao dao;
 	

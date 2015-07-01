@@ -1,6 +1,6 @@
-	package ua.project.chorniy.model;
+package ua.project.chorniy.model;
 	
-	import java.util.List;
+import java.util.List;
 	
 	import javax.persistence.CascadeType;
 	import javax.persistence.Column;
@@ -12,9 +12,9 @@
 	import javax.persistence.ManyToMany;
 	import javax.persistence.Table;
 	
-	@Entity
-	@Table(name="orders")
-	public class Order {
+@Entity
+@Table(name="orders")
+public class Order {
 	
 	@Id
 	@GeneratedValue
@@ -31,8 +31,7 @@
 	@JoinTable(name="Order_Product", joinColumns={@JoinColumn(name="idOrder")},
 	inverseJoinColumns={@JoinColumn(name="idProduct")})
 	private List<Product> oderedProducts;
-	
-	
+		
 	public Order() {
 	
 	}
@@ -44,8 +43,6 @@
 	public void setIdOrder(int idOrder) {
 	this.idOrder = idOrder;
 	}
-	
-	
 	
 	public String getAddressOfDelievery() {
 	return addressOfDelievery;

@@ -1,6 +1,5 @@
 package ua.project.chorniy.controller;
 
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +16,6 @@ import ua.project.chorniy.service.ProductService;
 
 @Controller
 public class ProductController {
-	
 	@Autowired
 	private ProductService service;
 	
@@ -43,5 +41,4 @@ public class ProductController {
 		model.addAttribute("products", productsByFilter);
 		return "filteredList";
 	}
-	
 }

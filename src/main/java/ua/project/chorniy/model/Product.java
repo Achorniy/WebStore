@@ -40,9 +40,6 @@ public class Product {
 	@ManyToMany(mappedBy="oderedProducts", fetch=FetchType.LAZY)
 	private List<Order> orders;
 	
-	/*@OneToMany(mappedBy="product", fetch=FetchType.EAGER)
-	private List<Image> images;*/
-	
 	public Product() {
 		
 	}

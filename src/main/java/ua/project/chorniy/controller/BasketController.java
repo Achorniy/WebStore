@@ -1,6 +1,5 @@
 package ua.project.chorniy.controller;
 
-
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,7 +20,6 @@ import ua.project.chorniy.service.ProductService;
 @Controller
 @RequestMapping("/basket")
 public class BasketController {
-	
 	@Autowired
 	private ProductService productService;	
 	
@@ -75,9 +73,8 @@ public class BasketController {
 	
 	private Basket getBasket(HttpSession session) {
 		Basket basket = (Basket) session.getAttribute("basket");
-		if( basket == null )
-			basket = new Basket();
+			if(basket == null)
+				basket = new Basket();
 		return basket;
 	}
-	
 }

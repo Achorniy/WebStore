@@ -10,6 +10,4 @@ public interface ProductService {
 	public Product getProduct(Integer idProduct);
 	public Iterable<Product> viewProducts(List<Product> products);
 	public List<Product> getProductsByPriceFilter(Integer priceFilter);
-	
-
 }

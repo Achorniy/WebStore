@@ -12,7 +12,6 @@ public class Basket {
 		products = new HashMap<Integer, Product>();
 	}
 
-	
 	public void addProductToBasket(Product product){
 		products.put(product.getIdProduct(), product);
 		

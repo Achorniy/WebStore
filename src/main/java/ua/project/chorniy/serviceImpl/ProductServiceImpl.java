@@ -44,17 +44,16 @@ public class ProductServiceImpl implements ProductService {
 	public List<Product> getProductsByPriceFilter(Integer priceFilter) {
 		Iterable<Product> listOfAllProducts = dao.findAll();
 			List<Product> filteredProducts = new ArrayList<Product>();
-			Iterator<Product> itr = listOfAllProducts.iterator();
-			while(itr.hasNext()){
-				Product p = (Product) itr.next();
-				if(p.getPrice()==priceFilter){
-					filteredProducts.add(p);
-				}
-			}
-			return filteredProducts;
-		}
-		
+			  Iterator<Product> itr = listOfAllProducts.iterator();
+				while(itr.hasNext()){
+					Product p = (Product) itr.next();
+						if(p.getPrice()==priceFilter){
+							filteredProducts.add(p);
+						}
+					}
+		return filteredProducts;
 	}
+}
 
 	
 	
