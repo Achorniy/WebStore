@@ -1,11 +1,9 @@
 package ua.project.chorniy.controller;
 
-import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import ua.project.chorniy.model.Basket;
 import ua.project.chorniy.model.Customer;
 import ua.project.chorniy.model.Order;
-import ua.project.chorniy.model.Product;
 import ua.project.chorniy.service.CustomerService;
 import ua.project.chorniy.service.OrderService;
 import ua.project.chorniy.service.ProductService;
@@ -26,7 +23,7 @@ import ua.project.chorniy.service.ProductService;
 public class BasketController {
 	
 	@Autowired
-	private ProductService service;	
+	private ProductService productService;	
 	
 	@Autowired
 	private OrderService serviceOrder;
@@ -37,12 +34,12 @@ public class BasketController {
 	@RequestMapping(value="/add/{id}")
 	public String addProductToBasket(@PathVariable int id, HttpSession session ) {
 		Basket basket = getBasket(session);
-		basket.addProductToBasket(service.getProduct(id));
+		basket.addProductToBasket(productService.getProduct(id));
 		session.setAttribute("basket", basket);
 		return "redirect:/get/product";
 	}
 	
-	@RequestMapping(value="/delete{id}")
+	@RequestMapping(value="/delete/{id}")
 	public String deleteProductFromBasket(@PathVariable int id, HttpSession session){
 		Basket basket = getBasket(session);
 		basket.deleteProductFromBasket(id);
@@ -53,7 +50,7 @@ public class BasketController {
 	@RequestMapping(value="/products")
 	public String getProducts(Model model, HttpSession session){
 		Basket basket = getBasket(session);
-		model.addAttribute("product", service.viewProducts(basket.getProducts()));
+		model.addAttribute("product", productService.viewProducts(basket.getProducts()));
 		return "productsInBasket";
 	}
 

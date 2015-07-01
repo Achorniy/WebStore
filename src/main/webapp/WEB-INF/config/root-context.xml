@@ -13,6 +13,7 @@
 	xmlns:jpa="http://www.springframework.org/schema/data/jpa" xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://www.springframework.org/schema/beans">
+	
 	<context:component-scan base-package="ua.project.chorniy" />
 	
 	<bean id="dataSource"
@@ -22,6 +23,7 @@
 		<property name="username" value="root" />
 		<property name="password" value="123456" />
 	</bean>
+	
 	<bean id="entityManagerFactory"
 		class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
 		<property name="dataSource" ref="dataSource" />
@@ -33,13 +35,16 @@
 				<prop key="hibernate.show_sql">true</prop>
 			</props>
 		</property>
+	
 		<property name="jpaVendorAdapter">
 			<bean class="org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter" />
 		</property>
 	</bean>
+	
 	<bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
 		<property name="entityManagerFactory" ref="entityManagerFactory" />
 	</bean>
+	
 	<tx:annotation-driven />
 	<jpa:repositories base-package="ua.project.chorniy.dao" />
 

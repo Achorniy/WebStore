@@ -7,10 +7,9 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
 
 @Entity
 @Table(name="product")
@@ -30,12 +29,19 @@ public class Product {
 	@Column(name="description")
 	private String description;
 	
+	/*@Lob
+	@Column(name="pic")
+	private byte[] pic;*/
+	
+	@Column(name="pic")
+	private String pic;
+	
+	
 	@ManyToMany(mappedBy="oderedProducts", fetch=FetchType.LAZY)
 	private List<Order> orders;
 	
-	/*@ManyToOne
-	@JoinColumn(name="idOrder")
-	private Order order;*/
+	/*@OneToMany(mappedBy="product", fetch=FetchType.EAGER)
+	private List<Image> images;*/
 	
 	public Product() {
 		
@@ -73,14 +79,6 @@ public class Product {
 		this.description = description;
 	}
 
-	/*public Order getOrder() {
-		return order;
-	}
-
-	public void setOrder(Order order) {
-		this.order = order;
-	}*/
-
 	public List<Order> getOrders() {
 		return orders;
 	}
@@ -88,5 +86,13 @@ public class Product {
 	public void setOrders(List<Order> orders) {
 		this.orders = orders;
 	}
+
 	
+	public String getPic() {
+		return pic;
+	}
+	
+	public void setPic(String pic) {
+		this.pic = pic;
+	}
 }
